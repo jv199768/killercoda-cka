@@ -1,0 +1,21 @@
+k get pod # Pods are pending...
+k edit deploy management-frontend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+...
+  name: management-frontend
+...
+spec:
+...
+  template:
+...
+    spec:
+      containers:
+      - image: nginx:alpine
+        imagePullPolicy: IfNotPresent
+        name: nginx
+...
+      dnsPolicy: ClusterFirst
+      nodeName: staging-node1 # REMOVE
+k get pod # Pods getting ready
