@@ -1,0 +1,12 @@
+grep kubelet /var/log/syslog
+ssh node01
+    service kubelet status
+ssh node01
+    cat /var/log/syslog | grep kubelet
+ssh node01
+    # maybe any interesting config files?
+    find / | grep kubeadm
+vim /var/lib/kubelet/kubeadm-flags.env
+KUBELET_KUBEADM_ARGS="--container-runtime-endpoint=unix:///var/run/containerd/containerd.sock --pod-infra-container-image=registry.k8s.io/pause:3.9"
+service kubelet restart
+service kubelet status
