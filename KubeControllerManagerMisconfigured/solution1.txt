@@ -1,0 +1,33 @@
+kubectl -n kube-system get pod
+cp ~/kube-controller-manager-controlplane.yaml.ori /etc/kubernetes/manifests/kube-controller-manager-controlplane.yaml
+vim /etc/kubernetes/manifests/kube-controller-manager.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+...
+  name: kube-controller-manager
+  namespace: kube-system
+spec:
+  containers:
+  - command:
+    - kube-controller-manager
+    - --allocate-node-cidrs=true
+    - --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --bind-address=127.0.0.1
+    - --client-ca-file=/etc/kubernetes/pki/ca.crt
+    - --cluster-cidr=192.168.0.0/16
+    - --cluster-name=kubernetes
+    - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt
+    - --cluster-signing-key-file=/etc/kubernetes/pki/ca.key
+    - --controllers=*,bootstrapsigner,tokencleaner
+    - --kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --leader-elect=true
+    - --project-sidecar-insertion=true # REMOVE
+    - --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt
+cd /etc/kubernetes/manifests
+mv kube-controller-manager.yaml ..
+sleep 5
+mv ../kube-controller-manager.yaml 
+kubectl get pods
+kubectl -n kube-system get pod
