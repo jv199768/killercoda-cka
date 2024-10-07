@@ -1,0 +1,51 @@
+cat /var/log/pods
+alias k=kubectl
+tail -f kube-system_kube-apiserver-cks-master_7aef8559c5d7d59259044bb444b01ac3/kube-apiserver/4.log
+...
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+    - --this-is-very-wrong
+    - --advertise-address=10.156.0.53
+    - --allow-privileged=true
+...
+k -n kube-system get pod # nothing there
+cd /var/log/pods
+ls -lh | grep apiserver
+tail -f kube-system_kube-apiserver-cks-master_7aef8559c5d7d59259044bb444b01ac3/kube-apiserver/4.log
+cp ~/kube-apiserver.yaml.ori /etc/kubernetes/manifests/kube-apiserver.yaml # smart people use a backup
+cp /etc/kubernetes/manifests/kube-apiserver.yaml ~/kube-apiserver.yaml.ori # always make a backup !
+vim /etc/kubernetes/manifests/kube-apiserver.yaml
+...
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+...
+    - --etcd-certfile=/etc/kubernetes/pki/apiserver-etcd-client.crt
+    - --etcd-keyfile=/etc/kubernetes/pki/apiserver-etcd-client.key
+    - --etcd-servers=this-is-very-wrong
+    - --insecure-port=0
+...
+k get pod
+docker logs 829f1d829a43
+cp ~/kube-apiserver.yaml.ori /etc/kubernetes/manifests/kube-apiserver.yaml # clever people use a backup
+cp /etc/kubernetes/manifests/kube-apiserver.yaml ~/kube-apiserver.yaml.ori # do you do backup?
+vim /etc/kubernetes/manifests/kube-apiserver.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+...
+  name: kube-apiserver
+  namespace: kube-system
+specTHIS IS VERY ::::: WRONG
+  containers:
+  - command:
+    - kube-apiserver
+...
+ps aux | grep apiserver
+find /var/log/pods/ | grep apiserver
+docker ps | grep apiserver
+journalctl -u kubelet | tail
+cp ~/kube-apiserver.yaml.ori /etc/kubernetes/manifests/kube-apiserver.yaml
