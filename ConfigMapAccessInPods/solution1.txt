@@ -1,0 +1,2 @@
+kubectl create configmap trauerweide --from-literal tree=trauerweide
+kubectl -f /root/cm.yaml create
