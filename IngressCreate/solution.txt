@@ -1,0 +1,7 @@
+k -n world expose deploy europe --port 80
+k -n world expose deploy asia --port 80
+k -n ingress-nginx get svc ingress-nginx-controller
+k get ingressclass
+cd /etc/kubernetes/manifests
+vi world-ingress.yaml
+kubectl apply -f world-ingress.yaml
