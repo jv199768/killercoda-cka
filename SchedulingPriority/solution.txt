@@ -1,0 +1,10 @@
+k -n management get pod -oyaml | grep -i priority -B 30
+k -n management delete pod sprinter
+k -n lion get pod
+k -n lion get pod -oyaml | grep priority
+k get priorityclass
+k -n lion run important --image=nginx:1.21.6 -oyaml --dry-run=client > pod.yaml
+vi pod.yaml
+kubectl apply -f pod.yaml
+k -n lion get pod
+k get events -A --sort-by='{.metadata.creationTimestamp}'
