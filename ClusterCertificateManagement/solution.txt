@@ -1,0 +1,2 @@
+kubeadm certs check-expiration # look for the apiserver one
+echo "Feb 05, 2034 10:20 UTC" > /root/apiserver-expiration # your date might be a different one
