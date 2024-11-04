@@ -1,0 +1,10 @@
+kubectl get node # only the controlplane node available
+
+kubeadm token create --print-join-command
+
+ssh node01
+    # execute command printed out by command above
+    kubeadm join 172.30.1.2:6443 --token ... #Must include all three arguments
+    exit
+
+kubectl get node # should show the node
