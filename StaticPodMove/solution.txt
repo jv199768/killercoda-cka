@@ -1,0 +1,9 @@
+scp node01:/etc/kubernetes/manifests/resource-reserver.yaml .
+cd /etc/kubernetes/manifests
+vi resource-reserver.yaml #resource-reserver.yaml saved file
+cd /etc/kubernetes/manifests
+ssh node01
+kubectl apply -f resource-reserver.yaml
+mv resource-reserver.yaml /etc/kubernetes/manifests/resource-reserver.yaml
+ssh node01 -- rm /etc/kubernetes/manifests/resource-reserver.yaml
+kubectl get pod -A
