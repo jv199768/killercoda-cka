@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np-100x
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      level: 100x
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+     - namespaceSelector:
+        matchLabels:
+         kubernetes.io/metadata.name: level-1000
+       podSelector:
+         matchLabels:
+           level: 100x
+  - to:
+     - namespaceSelector:
+        matchLabels:
+         kubernetes.io/metadata.name: level-1001 # CHANGE
+       podSelector:
+         matchLabels:
+           level: 100x
+  - to:
+     - namespaceSelector:
+        matchLabels:
+         kubernetes.io/metadata.name: level-1002
+       podSelector:
+         matchLabels:
+           level: 100x
+  - ports:
+    - port: 53
+      protocol: TCP
+    - port: 53
+      protocol: UDP
