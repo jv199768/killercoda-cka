@@ -1,0 +1,1 @@
+kubectl -n kube-system get po -o wide > pod-ip-output.txt
