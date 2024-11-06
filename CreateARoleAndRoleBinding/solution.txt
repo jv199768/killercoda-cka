@@ -1,0 +1,2 @@
+kubectl create role sa-creator --verb=create --resource=sa
+kubectl get role
