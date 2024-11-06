@@ -1,0 +1,2 @@
+kubeadm upgrade plan
+kubeadm upgrade apply v1.30.1
