@@ -1,2 +1,10 @@
 kubectl create role sa-creator --verb=create --resource=sa
 kubectl get role
+kubectl create rolebinding sa-creator-binding --role=sa-creator --user=Sandra
+kubectl get role,rolebinding
+kubectl auth can-i create sa --namespace default --as Sandra
+kubectl create sa dev
+kubectl create rolebinding dev-view-binding --clusterrole=view --serviceaccount=default:dev --namespace=default
+kubectl auth can-i get po --namespace default --as=system:serviceaccount:default:dev
+kubectl auth can-i get svc --namespace default --as=system:serviceaccount:default:dev
+kubectl auth can-i get po --namespace kube-system --as=system:serviceaccount:default:dev
