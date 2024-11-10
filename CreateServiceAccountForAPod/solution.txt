@@ -1,0 +1,7 @@
+vi sa.yaml
+kubectl apply -f sa.yaml
+kubectl -n default get sa
+vi secure-pod.yaml
+kubectl apply -f secure-pod.yaml
+kubectl get po -w
+kubectl exec secure-pod -- cat /var/run/secrets/kubernetes.io/serviceaccount/token
