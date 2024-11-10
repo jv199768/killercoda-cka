@@ -1,0 +1,10 @@
+# create the YAML for a pod named 'secure-pod' by using kubectl with the '--dry-run=client' option, output to YAML and saved to a file 'pod.yaml'
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-pod
+spec:
+  serviceAccountName: secure-sa
+  containers:
+  - image: nginx
+    name: secure-pod
