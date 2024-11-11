@@ -1,0 +1,12 @@
+# pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  containers:
+  - image: busybox
+    name: busybox
+  restartPolicy: Never # change this from Always to Never
