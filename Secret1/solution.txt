@@ -1,0 +1,2 @@
+kubectl config set-context --current --namespace=database-ns
+kubectl get secret database-data -o json | jq '.data | map_values(@base64d)' > decoded.txt
