@@ -1,0 +1,16 @@
+kubectl config use-context kubernetes-admin@kubernetes
+kubectl get svc -o jsonpath='{.spec.ports[0].targetPort}'
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+#spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  #ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      #targetPort: 49152 #[0]
+  externalIPs:
+    - 198.51.100.32
