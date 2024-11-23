@@ -1,0 +1,6 @@
+alias k=kubectl
+kubectl create serviceaccount app-account
+vi app-role-cka.yaml
+kubectl apply -f app-role-cka.yaml
+k -n default create rolebinding app-role-binding-cka --clusterrole app-role-cka --serviceaccount default:app-account
+kubectl auth can-i create pods --namespace=default
