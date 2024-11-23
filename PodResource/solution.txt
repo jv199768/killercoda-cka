@@ -1,0 +1,2 @@
+kubectl top pods -A | sort -nr -k3 | head -1
+echo kube-system,kube-apiserver-cluster1-controlplane > high_cpu_pod.txt
