@@ -1,0 +1,2 @@
+vi group1-role-cka.yaml
+kubectl auth can-i create,get,list deployments.apps
