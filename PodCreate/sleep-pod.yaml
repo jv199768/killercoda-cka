@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleep-pod
+spec:
+  containers:
+    - command:
+        - sleep        
+      image: nginx
+      name: sleep-pod
