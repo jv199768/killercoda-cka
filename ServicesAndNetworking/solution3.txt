@@ -1,0 +1,4 @@
+alias k=kubectl
+k create deployment my-web-app-deployment --image wordpress --replicas 2 --port 80
+vi my-web-app-service.yaml
+kubectl apply -f my-web-app-service.yaml
