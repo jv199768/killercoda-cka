@@ -1,0 +1,2 @@
+kubectl expose pod nginx-pod --name nginx-service --port 80 --type ClusterIP
+kubectl port-forward service/nginx-service 8080:80
