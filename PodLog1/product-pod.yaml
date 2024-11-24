@@ -1,0 +1,12 @@
+#kubectl describe pod product-pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: product-pod
+spec:
+  containers:
+    - name: product-container
+      image: busybox
+      env:
+        - name: TV_BRAND
+          value: "Sony Tv Is Good"
