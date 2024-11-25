@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: blue-pvc-cka
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: blue-stc-cka
+  resources:
+    requests:
+      storage: 50Mi
