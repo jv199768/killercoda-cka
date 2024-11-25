@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: red-pvc-cka
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: "" 
+  resources:
+    requests:
+      storage: 30Mi
+  selector:
+    matchLabels:
+      name: red-pv-cka
