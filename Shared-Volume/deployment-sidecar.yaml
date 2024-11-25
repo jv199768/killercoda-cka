@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-pod-cka
+  labels:
+    app: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: sidecar
+          image: busybox
+          command: ['tail', '-f', '/dev/null']
+        volumeMounts:
+            - name: data
+              mountPath: /opt
+      initContainers:
+        - name: shared-storage
+          image: busybox
+          restartPolicy: Always
+          command: ['tail', '-f', '/dev/null']
+          volumeMounts:
+            - name: data
+              mountPath: /var/www/shared
+              readOnly: true
+      volumes:
+        - name: data
+          emptyDir: {}
