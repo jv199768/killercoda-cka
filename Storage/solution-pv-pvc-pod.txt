@@ -1,0 +1,1 @@
+kubectl run my-pod-cka --image=nginx
