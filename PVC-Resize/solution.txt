@@ -1,0 +1,1 @@
+kubectl patch pvc yellow-pvc-cka  -p '{"spec":{"resources":{"requests":{"storage":"60Mi"}}}}'
