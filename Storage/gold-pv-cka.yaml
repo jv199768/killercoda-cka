@@ -1,0 +1,21 @@
+kind: PersistentVolume
+metadata:
+  labels:
+    tier: white
+  name: gold-pv-cka
+spec:
+  nodeAffinity:
+     required: 
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - node01
+  storageClassName: gold-stc-cka
+  capacity:
+    storage: 50Mi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/opt/gold-stc-cka"
