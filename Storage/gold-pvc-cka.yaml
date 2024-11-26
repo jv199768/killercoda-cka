@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gold-pvc-cka
+spec:
+  selector:
+    matchLabels:
+      tier: white
+  storageClassName: gold-stc-cka
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 30Mi
