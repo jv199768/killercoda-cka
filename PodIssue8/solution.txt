@@ -1,0 +1,8 @@
+journalctl -u kubelet.service
+vim /var/lib/kubelet/kubeadm-flags.env --3.9
+service kubelet restart
+docker ps | grep kube-apiserver
+kubectl cluster-info
+kubectl config view
+sudo kubeadm init --pod-network-cidr=172.30.1.0/16
+curl http://localhost:6443
