@@ -1,0 +1,2 @@
+kubectl config set context nginx-ns
+kubectl apply -f frontend-deployment.yaml
