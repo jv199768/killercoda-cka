@@ -1,0 +1,2 @@
+# kubectl config set-context kube-system
+# kubectl get pod -A
