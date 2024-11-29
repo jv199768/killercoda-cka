@@ -1,0 +1,31 @@
+#k scale --replicas=2 deploy video-app
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: "2024-11-29T14:16:08Z"
+  generation: 1
+  labels:
+    app: video-app
+  name: video-app
+  namespace: default
+  resourceVersion: "4140"
+  uid: fdc95bd5-c56f-405e-87ea-99085f3d185f
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: video-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: video-app
+    spec:
+      containers:
