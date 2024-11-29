@@ -1,0 +1,9 @@
+sudo swapoff -a
+sudo sed -i '/ swap / s/^/#/' /etc/fstab
+docker info |grep -i cgroup
+{
+    "exec-opts": ["native.cgroupdriver=systemd"]
+}
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo systemctl restart kubelet
