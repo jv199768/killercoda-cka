@@ -1,0 +1,22 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: "2024-12-01T13:35:40Z"
+  name: dev-role-cka
+  namespace: default
+  resourceVersion: "29567"
+  uid: 4173498b-7525-42df-8c31-fabe09cf3545
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services 
+  verbs:
+  - create 
+  - list 
+  - get 
