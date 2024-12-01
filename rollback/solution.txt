@@ -1,0 +1,3 @@
+kubectl rollout undo deployment redis-deployment
+kubectl describe deployment | grep Annotations
+kubectl scale deployment redis-deployment --replicas=3
