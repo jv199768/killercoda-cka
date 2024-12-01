@@ -1,0 +1,1 @@
+kubectl scale deployment.apps/nginx-deployment --replicas=3
