@@ -1,0 +1,1 @@
+etcdctl snapshot restore --data-dir=/root/default.etcd /opt/cluster_backup.db 2>&1 | tee restore.txt
