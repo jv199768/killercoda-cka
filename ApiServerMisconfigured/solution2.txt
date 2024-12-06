@@ -1,0 +1,9 @@
+cat /var/log/syslog | grep kube-apiserver
+
+There is wrong YAML in the manifest at metadata;
+
+Check logs in /var/log/pods.
+Error: Error: unknown flag: --authorization-modus.
+The correct parameter is --authorization-mode.
+
+It should be --etcd-servers=https://127.0.0.1:2379
