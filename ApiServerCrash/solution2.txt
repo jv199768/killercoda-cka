@@ -1,0 +1,6 @@
+cp ~/kube-apiserver.yaml.ori /etc/kubernetes/manifests/kube-apiserver.yaml
+k -n kube-system get pod
+crictl ps
+crictl logs 604f5db92eaa8
+journalctl | grep apiserver
+cp ~/kube-apiserver.yaml.ori /etc/kubernetes/manifests/kube-apiserver.yaml
